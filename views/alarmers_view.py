@@ -5,6 +5,7 @@ from schemas import *
 from model import *
 from utils.validators import *
 
+
 class AlarmersView(FlaskView):
     route_base = '/alarmers/'
     alarmer_schema = AlarmerSchema()
@@ -20,7 +21,6 @@ class AlarmersView(FlaskView):
             alarmer = Alarmer.query.get_or_404(int(id))
         except NotFound:
             raise NotFound("Alarmer not found")
-            # return jsonify({"message": "Alarmer not found"}), 404
         data = alarmer_schema.dump(alarmer).data
         return jsonify(data)
 
@@ -29,7 +29,7 @@ class AlarmersView(FlaskView):
         data, errors = alarmer_schema.load(data)
         if errors:
             return jsonify(errors), 422
-        username = data['user']['username'], data['user']['password']
+        username, password = data['user']['username'], data['user']['password']
         user = User.query.filter_by(username=username).first()
         if user is None:
             # Create user
@@ -77,6 +77,5 @@ class AlarmersView(FlaskView):
             db.session.commit()
         except:
             db.session.rollback()
-
         return jsonify({"message":"Alarmer updated", "alarmer": alarmer_schema.dump(alarmer).data}), 200
 

@@ -1,15 +1,11 @@
-from flask import jsonify, request
 from werkzeug.exceptions import HTTPException
 from database.database import create_app
-from schemas import *
 from views import *
+from model import *
 import os
 
 application = create_app()
-from model import *
 
-userSchema = UserSchema()
-alarmerSchema = AlarmerSchema()
 
 @application.errorhandler(404)
 @application.errorhandler(403)
@@ -21,10 +17,6 @@ def handle_error(e):
     if isinstance(e, HTTPException):
         code = e.code
     return jsonify(error=str(e.description), code=code), code
-
-@application.route('/')
-def home():
-    return "You shouldn't be here!!!"
 
 api_prefix = "/api/v1/"
 AlarmersView.register(application, route_prefix=api_prefix)

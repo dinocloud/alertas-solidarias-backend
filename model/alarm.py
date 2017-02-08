@@ -14,6 +14,8 @@ class AlarmType(db.Model):
 
 class Alarm(db.Model):
     __tablename__ = 'alarms'
+    id = db.Column(db.Integer, primary_key=True)
+    description = db.Column(db.String(500), nullable=False)
     alarm_type_id = db.Column(db.Integer, db.ForeignKey('alarm_type.id'))
     alarm_type = db.relationship('AlarmType', backref=db.backref('alarm', lazy='dynamic'))
     alarmer_id = db.Column(db.Integer, db.ForeignKey('alarmers.id'))
@@ -21,7 +23,8 @@ class Alarm(db.Model):
     latitude = db.Column(db.Float(9,6))
     longitude = db.Column(db.Float(9,6))
 
-    def __init__(self, alarme_type=None, alarmer=None, latitude=None, longitude=None):
+    def __init__(self, description=None, alarme_type=None, alarmer=None, latitude=None, longitude=None):
+        self.description = description
         self.alarm_type = alarme_type
         self.alarmer = alarmer
         self.latitude = latitude

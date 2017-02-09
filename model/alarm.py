@@ -23,9 +23,9 @@ class Alarm(db.Model):
     latitude = db.Column(db.Float(9,6))
     longitude = db.Column(db.Float(9,6))
 
-    def __init__(self, description=None, alarme_type=None, alarmer=None, latitude=None, longitude=None):
+    def __init__(self, description=None, alarm_type=None, alarmer=None, latitude=None, longitude=None):
         self.description = description
-        self.alarm_type = alarme_type
+        self.alarm_type = alarm_type
         self.alarmer = alarmer
         self.latitude = latitude
         self.longitude = longitude

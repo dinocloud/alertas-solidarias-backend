@@ -1,0 +1,50 @@
+# Alarm type
+
+POST
+
+{
+  "name": "Homeless person",
+  "description": "Alarm type for when spotting a homeless person in need"
+}
+
+GET alarmtype/1
+
+{
+  "id": 1
+  "name": "Homeless person",
+  "description": "Alarm type for when spotting a homeless person in need"
+}
+
+# Alarm
+
+## GET alarm/1
+
+{
+  "id": 1,
+  "alarm_type": {
+    "name": "Homeless person",
+    "id": 1
+  }
+  "latitude": -32.256218,
+  "longitude": 56.256974,
+  "alarmer": {
+    "id": 1,
+    "user": {
+      "username": "alejandro",
+      "id": 1
+    }
+  }
+}
+
+POST
+
+{
+  "alarm_type": {
+    "id": 1
+  }
+  "latitude": -32.256218,
+  "longitude": 56.256974,
+  "alarmer": {
+    "id": 1,
+  }
+}

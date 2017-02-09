@@ -35,6 +35,7 @@ alarmers_schema = AlarmerSchema(many=True)
 alarm_type_schema = AlarmTypeSchema()
 alarm_types_schema = AlarmTypeSchema(many=True)
 alarm_schema = AlarmSchema()
+alarm_schema_for_alarm = AlarmSchema(only=('id', 'name', 'last_name'))
 alarms_schema = AlarmSchema(many=True)
 
 

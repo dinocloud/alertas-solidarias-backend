@@ -18,11 +18,15 @@ def handle_error(e):
         code = e.code
     return jsonify(error=str(e.description), code=code), code
 
+@application.route('/')
+def home():
+    return jsonify({"messsage": "App is up & running"})
+
 api_prefix = "/api/v1/"
 AlarmersView.register(application, route_prefix=api_prefix)
 
 if __name__ == '__main__':
     with application.app_context():
         db.create_all()
-        application.run(port=int(os.getenv("APP_PORT", "5000")), debug=True)
+        application.run(port=int(os.getenv("APP_PORT", "5000")), host='0.0.0.0', debug=True)
 

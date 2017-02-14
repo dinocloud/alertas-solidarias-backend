@@ -1,8 +1,7 @@
 import os
 class DBSettings:
     DB_ENGINE = "mysql+pymysql"
-    #DB_HOST = os.getenv("RDS_HOSTNAME", "13.92.234.41")
-    DB_HOST = os.getenv("RDS_HOSTNAME", "aa1i7noasvy142j.cilz5xnmiidq.sa-east-1.rds.amazonaws.com")
+    DB_HOST = os.getenv("RDS_HOSTNAME", "alertas-solidarias.cilz5xnmiidq.sa-east-1.rds.amazonaws.com")
     DB_PORT = os.getenv("RDS_PORT", "3306")
     DB_NAME = os.getenv("RDS_DB_NAME", "alertas_solidarias")
     DB_USER = os.getenv("RDS_USERNAME", "root")

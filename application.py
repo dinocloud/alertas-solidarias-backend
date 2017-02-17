@@ -18,6 +18,7 @@ def handle_error(e):
         code = e.code
     return jsonify(error=str(e.description), code=code), code
 
+
 @application.route('/')
 def home():
     return jsonify({"messsage": "App is up & running"})

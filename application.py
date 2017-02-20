@@ -1,4 +1,4 @@
-from werkzeug.exceptions import HTTPException
+from werkzeug import exceptions
 from database.database import create_app
 from views import *
 from model import *
@@ -14,7 +14,7 @@ application = create_app()
 @application.errorhandler(500)
 def handle_error(e):
     code = 500
-    if isinstance(e, HTTPException):
+    if isinstance(e, exceptions.HTTPException):
         code = e.code
     return jsonify(error=str(e.description), code=code), code
 

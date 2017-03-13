@@ -20,6 +20,7 @@ def handle_error(e):
 
 api_prefix = "/api/v1/"
 AlarmersView.register(application, route_prefix=api_prefix)
+UsersView.register(application, route_prefix=api_prefix)
 
 if __name__ == '__main__':
     with application.app_context():

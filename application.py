@@ -25,6 +25,8 @@ def home():
 
 api_prefix = "/api/v1/"
 AlarmersView.register(application, route_prefix=api_prefix)
+AlarmTypeView.register(application, route_prefix=api_prefix)
+AlarmView.register(application, route_prefix=api_prefix)
 UsersView.register(application, route_prefix=api_prefix)
 
 if __name__ == '__main__':

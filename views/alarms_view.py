@@ -11,7 +11,7 @@ class AlarmTypeView(FlaskView):
     alarm_type_schema = AlarmTypeSchema()
 
     def index(self):
-        alarm_types = AlarmType.query()
+        alarm_types = AlarmType.query.order_by(AlarmType.id.desc())
         data = alarm_type_schema.dump(alarm_types, many=True).data
         return jsonify(data)
 
